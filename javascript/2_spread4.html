@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스프레드 연산자</title>
+</head>
+
+<body>
+    <script>
+
+        function directions(...args) {//
+            /*
+                ...args 는 배열로 인자를 받아들인다 라는 뜻!
+                원래 인자는 하나밖에 못 들어 온다.
+            */
+            console.log(typeof args);
+            console.log(args);
+            let [start, ...remaining] = args;
+            // start 서울 remaining 나머지 저장
+            let [finish, ...stops] = remaining.reverse();
+            console.log(args.length + " 도시를 운행 합니다.");
+            console.log(start + "에서 출발 합니다.");
+            console.log("목적지는 " + finish + "입니다.");
+            console.log("중간에 " + stops.length + " 군데를 들립니다.")
+        }
+        directions("서울", "수원", "천안", "대전", "대구", "부산");
+
+    </script>
+</body>
+
+</html>

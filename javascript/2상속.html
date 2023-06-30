@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상속</title>
+</head>
+<body>
+    <script>
+        class Car {
+            constructor(brand){
+                this.brand = brand
+            }
+            present(){
+                return `I have a ${this.brand}`;
+            }
+        }
+
+        let myCar = new Car('BMW');
+        console.log(myCar.present());
+
+        class Bus extends Car {
+            constructor(brand, persons){
+                super(brand);
+                this.persons = persons;
+            }
+            information(){
+                let info = `${super.present()} 승객수는 ${this.persons}`;
+                return info;
+            }
+        }
+        let myCar2 = new Bus('MAN Bus',45);
+        console.log(myCar2.information());
+
+        class Truck extends Car {
+            constructor(brand, capa){
+                super(brand);
+                this.capa = capa;
+            }
+            information(){
+                let info = `${super.present()} 적재량은 ${this.capa}T`;
+                return info;
+            }
+        }
+        let myCar3 = new Truck('MAN', 8);
+        console.log(myCar3.information());
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class car {
+            constructor(name,year){//constructor 매서드이다
+                this.name = name;
+                this.year = year;
+            }
+            age(){
+                const date = new Date();
+                return date.getFullYear() - this.year;
+            }
+        }
+
+        const mycar1 = new car('ford',2014);
+        const mycar2 = new car('audi',2010);
+        console.log(mycar1);
+        console.log(mycar2);
+
+        console.log(`mycar1 : ${mycar1.name}, ${mycar1.age()}년된 자동차`);
+        console.log(`mycar2 : ${mycar2.name}, ${mycar2.age()}년된 자동차`);
+    </script>
+</body>
+</html>

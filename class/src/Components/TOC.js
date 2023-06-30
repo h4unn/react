@@ -9,6 +9,12 @@ class TOC extends Component {
         anchors[id-1].classList.add("active");
     }
 
+    shouldComponentUpdate(newProps, newState){
+        if(this.props.data === newProps.data){
+            return false;
+        }
+        return true;
+    }
     render() {
         console.log("TOC render");
 
@@ -19,9 +25,9 @@ class TOC extends Component {
             lists.push(
                 <li key={content.id}>
                     <a className='content' href="/" onClick={function(id, e){
-                       e.preventDefault();
-                       this.props.onChangePage(id);
-                       this.setAcive(id);
+                        e.preventDefault();
+                        this.props.onChangePage(id);
+                        this.setAcive(id);
                     }.bind(this, content.id)}>{content.title}</a>
                 </li>
             );

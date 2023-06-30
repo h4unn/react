@@ -34,6 +34,14 @@ class App extends Component {
     return max;
   }
 
+  getReadContent(){
+    for(let data of this.state.contents) {
+      if(data.id == this.state.select_content_id) {
+        return data;
+      }
+    }
+  }
+
   render() {
     console.log("App render");
 
@@ -51,18 +59,23 @@ class App extends Component {
         }.bind(this)} 
       />
     } else if(this.state.mode === "read") {
-      for(let content of this.state.contents) {
-        if(content.id == this.state.select_content_id) {
-          _title = content.title;
-          _desc = content.desc;
-          break;
-        }
-      }
+      let data = this.getReadContent();
       _article = <ReadContent 
-        title={_title} 
-        desc={_desc} 
+        title={data.title} 
+        desc={data.desc} 
         onChangeMode={function(_mode){
-          this.setState({mode: _mode});
+          if(_mode === 'delete'){
+            let newContents = Array.from(this.state.contents);
+            for(let i = 0; i < newContents.length; i++){
+              if(newContents[i].id === this.state.select_content_id){
+                newContents.slice(i,1);
+                break;
+              }
+            }
+            this.setState({contents:newContents, mode:'welcome'});
+          }else{
+            this.setState({mode: _mode});
+          }
         }.bind(this)} 
       />
     } else if(this.state.mode === "create") {
@@ -77,7 +90,21 @@ class App extends Component {
         });
       }.bind(this)} />
     } else if(this.state.mode === "update") {
-      _article = <UpdateContent />
+      let _data = this.getReadContent();
+      _article = <UpdateContent data={_data} onSubmit={function(_id ,_title ,_desc){
+        console.log(_id);
+        console.log(_title);
+        console.log(_desc);
+          let newContents = Array.from(this.state.contents);
+          for(let i=0; i < newContents.length; i++){
+            if(_id === newContents[i].id){
+              newContents[i].title = _title;
+              newContents[i].desc = _desc;
+              break;
+            }
+          }
+          this.setState({contents: newContents, mode:'read'});
+      }.bind(this)}/>
     }
 
     return(

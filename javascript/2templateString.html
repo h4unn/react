@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>템플릿 문자열</title>
+</head>
+<body>
+    <p id="demo">
+        <!-- <h2>template literals</h2>
+        <ul>
+            <li>template literals</li>
+            <li>javascript</li>
+            <li>es6</li>
+        </ul> -->
+    </p>
+    <script>
+        let header = 'Template literals';
+        let tags = ['template literals2','javascript2','es62'];
+        let html = `<h2>${header}</h2>`; 
+        html += "<ul>";
+        for(let x of tags){
+            html += `<li>${x}</li>`;
+        }
+        html += "</ul>";
+        document.getElementById('demo').innerHTML = html;
+    </script>
+    <script>
+        for(let i in tags){
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

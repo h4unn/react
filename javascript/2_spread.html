@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스프레드 연산자</title>
+</head>
+<body>
+    <script>
+
+        const peaks = ['대철봉','중청봉','소청봉'];
+        const canyons = ['천불동계곡','가야동계곡'];
+        const seoraksan = [...peaks,...canyons];
+        // ...변수 : 배열 호출
+
+        console.log(seoraksan.join(','));
+        // 문자나 숫자 배열을 각 값을 구분자로 해서 문자열로 반환
+
+        const peaks2 = peaks;
+        const peaks3 = [...peaks];
+        console.log(peaks2);
+        console.log(peaks3);
+        /*
+            peaks2 peaks3 의 결과는 동일
+            peaks[0] = '설악봉';
+
+            peaks2
+            (3) ['설악봉', '중청봉', '소청봉']
+            peaks3
+            (3) ['대철봉', '중청봉', '소청봉']
+
+            peaks2 는 값을 미러링
+            peaks3 는 값을 가져와서 자기한테 저장 
+        */
+
+    </script>
+</body>
+</html>
