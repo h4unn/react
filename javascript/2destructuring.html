@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조 분해</title>
+</head>
+<body>
+    <!-- <script>
+        const sandwich = {
+            bread : '더치크런치',
+            meat : '참치',
+            cheese : '스위스',
+            toppings : ['상추','토마토','머스타드']
+        };
+
+        // let bread = sandwich.bread;
+        // let meat = sandwich.meat;
+        // 기존 방식
+
+        let {bread, meat} = sandwich;
+
+        bread = '마늘';
+        meat = '칠면조';
+        console.log(bread);
+        console.log(meat);
+        console.log(sandwich);
+
+    </script> -->
+    <script>
+        // const lordify = ({lastName}) => {
+        //     console.log(`캔터베리의 ${lastName}`);
+        // }
+        const lordify = ({spouse:{firstName}}) => {
+            console.log(`캔터베리의 ${firstName}`);
+        }
+        let regularPerson = {
+            firstName : '재석',
+            lastName : '유',
+            spouse : {
+                firstName : '경은',
+                lastName : '나'
+            }
+        }
+
+        lordify(regularPerson);
+        
+        let animal =  ["캥거루", "윔벳", "코알라"];
+    </script>
+</body>
+</html>

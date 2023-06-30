@@ -1,0 +1,33 @@
+<script>
+    var name = "park";
+    var sound = "go fast";
+    var skier = {
+        name: name,
+        sound: sound,
+        powerYell: function () {
+            var yell = this.sound.toUpperCase();
+            console.log(`${yell} ${yell} ${yell} ${yell}!!!`);
+        },
+        speed: function (kmph) {
+            this.speed = kmph;
+            console.log(`속력(km/h):${kmph}`);
+        }
+    };
+    skier.powerYell();
+    skier.speed(56);
+    console.log(skier);
+</script>
+<script>
+    var skier = {
+        name,
+        sound,
+        powerYell() {
+            var yell = this.sound.toUpperCase();
+            console.log(yell + " " + yell + " " + yell + "!!!");
+        },
+        speed(kmph) {
+            this.speed = kmph;
+            console.log("속력(km/h): " + kmph);
+        }
+    }
+</script>

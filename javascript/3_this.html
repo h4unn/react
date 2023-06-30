@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    <button onclick="hideButton(this)">클릭하면 디진다.</button>
+    <script>
+        // let x = this;
+        // console.log(x);
+        
+        const myFunction = () => {
+            return this
+        }
+        console.log(myFunction());
+
+        function hideButton(btn){
+            btn.style.display = "none";
+        }
+        const person1 = {
+            fullName : function(){
+                return `${this.firstName} ${this.lastName}`;
+            }
+        }
+        const person2 = {
+            firstName : '존',
+            lastName : '도우'
+        }
+        let name = person1.fullName.call(person2);
+        console.log(name);
+
+        const person3 ={
+            firstName : '재석',
+            lastName : '유',
+            fullName : function(){
+                return `${this.firstName} ${this.lastName}`;
+            }
+        }
+        const member = {
+            firstName : '명수',
+            lastName : '박',
+        }
+        let name2 = person3.fullName.bind(member)();
+        console.log(name2);
+    </script>
+</body>
+</html>

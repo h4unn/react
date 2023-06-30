@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스프레드 연산자</title>
+</head>
+<body>
+    <script>
+
+        const peaks = ['대철봉','중청봉','소청봉'];
+        console.log(peaks.join(','));
+
+        const [last] = [...peaks].reverse(); // 원본은 그대로 두고 reverse 시키는 방식
+        console.log(last);
+        
+        // peaks.reverse();
+        console.log(peaks.join(','));
+
+    </script>
+</body>
+</html>

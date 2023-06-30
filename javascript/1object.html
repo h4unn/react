@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            field1 : 10,
+            field2 : 20,
+            method : function(){
+                return this.field1 + this.field2;
+            }
+        }
+        
+
+        let obj2 = {
+            field1 : 30,
+            field2 : 40,
+            method : function(){
+                return this.field1 + this.field2;
+            }
+        }
+        console.log(obj1.method());
+        console.log(obj2.method());
+
+        function obj_template(field1,field2){
+            this.field1 = field1;
+            this.field2 = field2;
+            this.method = function (){
+                return this.field1 + this.field1;
+            }
+        }
+        let obj3 = new obj_template(30,40);
+        let obj4 = new obj_template(40,50);
+        console.log(obj3.method());
+        console.log(obj4.method());
+    </script>
+</body>
+</html>
