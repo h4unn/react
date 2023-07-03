@@ -45,7 +45,7 @@ function App() {
         setSelectContentId(id);
       }} />
 
-      <Content title={_title} desc={_desc} />
+      <Content title={_title} desc={_desc} onChangeMode={_mode => setMode(_mode)} />
     </div>
   );
 }

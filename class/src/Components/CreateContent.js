@@ -2,6 +2,8 @@ import { Component } from "react";
 
 class CreateContent extends Component {
     render() {
+        console.log("UpdateContent render");
+
         return (
             <article>
                 <h2 className="article_title">Create</h2>

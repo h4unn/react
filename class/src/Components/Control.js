@@ -2,6 +2,8 @@ import { Component } from "react";
 
 class Control extends Component {
     render() {
+        console.log("Control render");
+        
         return (
             <div className="buttons">
                 <button onClick={function(){

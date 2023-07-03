@@ -9,6 +9,14 @@ class TOC extends Component {
         anchors[id-1].classList.add("active");
     }
 
+    shouldComponentUpdate(newProps, newState) {
+        if(this.props.data === newProps.data) {
+            return false;
+        }
+
+        return true;
+    }
+
     render() {
         console.log("TOC render");
 
