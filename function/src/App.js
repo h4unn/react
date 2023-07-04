@@ -46,14 +46,7 @@ function App() {
         setMode(_mode)
       }
     }} />;
-    for(let record of contents) {
-      if(record.id === selectContentId) {
-        _title = record.title;
-        _desc = record.desc;
-        _article = <ReadContent title={_title} desc={_desc} onChangeMode={_mode => setMode(_mode)} />;
-        break;
-      }
-    }
+    
   } else if(mode === 'create'){
     _article = <CreateContent onSubmit={function(_title,_desc){
       console.log(_title,_desc);
