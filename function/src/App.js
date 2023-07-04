@@ -27,7 +27,25 @@ function App() {
     _article = <ReadContent title={_title} desc={_desc} mode={mode} onChangeMode={_mode => setMode(_mode)} />;
   } else if(mode === "read") {
     let record = getContent(contents,selectContentId);
-    _article = <ReadContent title={record.title} desc={record.desc} mode={mode} onChangeMode={_mode => setMode(_mode)} />;
+    _article = <ReadContent title={record.title} desc={record.desc} mode={mode} 
+    onChangeMode={_mode => {
+      if(_mode = 'delete'){
+        if(window.confirm('really?')){
+          let data = Array.from(contents);
+          for(let i = 0; i < data.length; i++){
+            if(selectContentId === data[i].id){
+              data.splice(i,1);
+              break;
+            }
+          }
+          setContents(data );
+          setMode('welcome');
+          window.confirm('deleted');
+        }
+      }else{
+        setMode(_mode)
+      }
+    }} />;
     for(let record of contents) {
       if(record.id === selectContentId) {
         _title = record.title;
