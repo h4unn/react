@@ -60,7 +60,6 @@ button {
   border: none;
   background-color: #777777;
   color: white;
-  margin: 5px;
 }
 .buttons button:hover {
   background-color: #111111;

@@ -1,8 +1,10 @@
 import "./css/style.css";
-
 import Subject from "./Components/Subject";
 import TOC from "./Components/TOC";
-import Content from "./Components/Content";
+import CreateContent from "./Components/CreateContent";
+import ReadContent from "./Components/ReadContent";
+import UpdateContent from "./Components/UpdateContent";
+
 
 import { useState } from "react";
 
@@ -18,18 +20,47 @@ function App() {
     {id: 4, title: "React", desc: "React는 역동적인 화면을 표현해 줍니다."}
   ]);
 
-  let _title, _desc = null;
+  let _title, _desc, _article = null;
   if(mode === "welcome") {
     _title = welcome.title;
     _desc = welcome.desc;
+    _article = <ReadContent title={_title} desc={_desc} mode={mode} onChangeMode={_mode => setMode(_mode)} />;
   } else if(mode === "read") {
+    let record = getContent(contents,selectContentId);
+    _article = <ReadContent title={record.title} desc={record.desc} mode={mode} onChangeMode={_mode => setMode(_mode)} />;
     for(let record of contents) {
       if(record.id === selectContentId) {
         _title = record.title;
         _desc = record.desc;
+        _article = <ReadContent title={_title} desc={_desc} onChangeMode={_mode => setMode(_mode)} />;
         break;
       }
     }
+  } else if(mode === 'create'){
+    _article = <CreateContent onSubmit={function(_title,_desc){
+      console.log(_title,_desc);
+      console.log(getNewId(contents));
+      let _id = getNewId(contents);
+      let newContents = contents.concat({id:_id, title:_title, desc:_desc});
+      setContents(newContents);
+      setMode('read');
+      setSelectContentId(_id);
+    }}/>
+  } else if(mode === 'update'){
+    let record = getContent(contents, selectContentId);
+
+    _article = <UpdateContent data={record} onSubmit={function(_id, _title, _desc){
+      let data = Array.from(contents)
+      for(let i = 0; i < data.length; i++){
+        if(_id === data[i].id){
+          data[i].title = _title;
+          data[i].desc = _desc;
+          break;
+        }
+      }
+      setContents(data);
+      setMode('read');
+    }}/>
   }
 
   return (
@@ -45,9 +76,27 @@ function App() {
         setSelectContentId(id);
       }} />
 
-      <Content title={_title} desc={_desc} />
+      {_article}
     </div>
   );
+}
+// 
+function getNewId(contents){
+  let max = contents[0].id; 
+  for(let i =0 ; i < contents.length; i++){
+    if(max < contents[i].id){
+      max=contents[i].id;
+    }
+  }
+  return ++max;
+}
+
+function getContent(contents, selectContentId){
+  for(let record of contents){
+    if(record.id === selectContentId){
+      return record;
+    }
+  }
 }
 
 export default App;
