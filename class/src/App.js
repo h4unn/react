@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './css/style.css';
 import { Component } from 'react';
 
@@ -114,26 +115,45 @@ class App extends Component {
         }.bind(this)}
       />
     }
+=======
+import {Component,useState} from 'react';
+import './App.css';
+>>>>>>> 0f96c1f10681a36e39ae5c9279c4d72144cb3de2
 
+function App() {
+  return (
+    <div className="container">
+      <h1>Hello World!</h1>
+      <FuncComp initNumber={2} />
+      <ClassComp initNumber={2} />
+    </div>
+  );
+}
+function FuncComp({initNumber}){
+  const numberState = useState(initNumber);
+  let number = numberState[0];
+  let setNumber = numberState[1];
+  console.log(number)
+  console.log(setNumber);
+  return (
+    <div className="container">
+      <h2>function style component</h2>
+      <p>Number : {numberState[0]}</p>
+    </div>
+  );
+}
+class ClassComp extends Component {
+  // state = {
+  //   number : this.props.initNumber;
+  // }
+  render(){
     return(
-      <div>
-        <Subject 
-          title={this.state.subject.title} 
-          sub={this.state.subject.sub} 
-          onChangePage={function(_mode){
-            this.setState({mode: _mode});
-          }.bind(this)} 
-        />
-
-        <TOC data={this.state.contents} onChangePage={function(id){
-          console.log(id);
-          this.setState({mode: "read", select_content_id: id});
-        }.bind(this)} />
-
-        {_article}
+      <div className='container'>
+        <h2>Class Style Component</h2>
+        <p>Number : {this.props.initNumber}</p>
+        
       </div>
     );
   }
 }
-
 export default App;
