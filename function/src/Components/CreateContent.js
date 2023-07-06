@@ -1,13 +1,13 @@
 import { useRef } from "react";
 
-function CreateContent({onSubmit=f=>f}){
+function CreateContent({onSubmit=f => f}) {
     const txtTitle = useRef();
     const areaDesc = useRef();
 
-    return(
+    return (
         <article>
             <h2 className="article_title">Create</h2>
-            <form action="/" method="post" onSubmit={function(e){
+            <form action="/" method="post" onSubmit={e => {
                 e.preventDefault();
                 onSubmit(txtTitle.current.value, areaDesc.current.value);
             }}>
@@ -18,4 +18,5 @@ function CreateContent({onSubmit=f=>f}){
         </article>
     );
 }
+
 export default CreateContent;

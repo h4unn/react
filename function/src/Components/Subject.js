@@ -1,4 +1,4 @@
-function Subject({title="", sub="", onChangePage=()=>{}}) {
+function Subject({title="", sub="", onChangePage=f=>f}) {
   return (
     <header>
       <h1>
